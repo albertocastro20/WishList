@@ -1,0 +1,186 @@
+
+/*Color del background*/
+body{
+    background-color: rgb(214, 161, 179);
+}
+
+
+/* CSS para contenedores */
+
+.contenedorBotones{
+    display: flex;
+    
+}
+
+.GiftList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    max-height: 650px;
+    background-color: rgba(131, 25, 108, 0.3) ;
+    overflow-y: auto;
+    
+    
+}
+
+/*  Estilos para los botones de filtrado */
+
+.FButton{
+    border: 1px solid black;
+    background-color: rgb(221, 209, 209);
+    color: rgb(0, 0, 0);
+    margin: 6px;
+    font-size: 17px;
+    width: 6em;
+    background-color: rgb(214, 161, 179);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.FButton:hover{
+    background-color: black;
+    color: white;
+}
+
+.FButton:active{
+    background-color: white;
+}
+
+/* Estilos para la Card con datos que contiene los objetos */
+
+.Card:hover{
+    background-color: white;
+}
+
+.Card{
+    position: relative;
+    background-color: rgb(170, 114, 163);
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+    font-size: 14px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+
+.comprado{
+    background-color: rgb(146, 70, 136) !important ;
+}
+
+.comprado:hover{
+    background-color: aqua !important;
+}
+
+.contenedorTitulo{
+    display: flex;
+}
+
+.Titulo{
+    display: inline-block;
+    justify-self: left;
+    margin: 15px auto ;
+
+}
+
+.botonOpciones{
+    display: inline-block;
+    justify-content: right;
+    margin: 0.1em .3em auto 6.5em;
+    background-color: rgba(170, 114, 163, .5);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.imagenCard{
+    align-self: center;
+}
+
+/* Estilo para el boton de agregar un nuevo item */
+
+.buttonAddElement{
+    font-size: 45px;
+    background-color: rgb(170, 114, 163);
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 50%;
+    margin: 1em;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonAddElement:hover{
+    background-color: white;
+}
+
+.buttonAddElement:active{
+    background-color: black;
+}
+
+/* Estilos para los elementos de la Card de registro, la Card de registro usa el mismo estilo que la Card normal*/
+
+
+.descripcionInput{
+    margin: 1em;
+    height: 90%;
+    justify-content: initial;
+    align-items: start;
+}
+
+.InputCosto{
+    margin: .5em 1em;
+    width: 5em;
+}
+
+.urlObjeto{
+    width: 15em;
+    align-self: center;
+}
+
+.botonRegistrar{
+    
+    align-self: center;
+    margin-left: auto;
+    margin: 1em 1em 1em 3em;
+}
+
+/*Se crean los estilos para el menu de opciones*/
+.contenedorOpciones{
+    /* 1. Saca el elemento del flujo normal (la clave para que no desacomode) */
+    position: absolute; 
+    
+    /* 2. Colócalo donde quieres que aparezca (ej. en la esquina superior derecha) */
+    top: 20px; /* Aparece justo debajo del botón o borde superior */
+    right: 5px;   /* Se alinea a la derecha del contenedor (.gift-card) */
+    
+    /* 3. Asegura que siempre esté por encima de otros elementos (la clave de superposición) */
+    z-index: 10; 
+    
+    /* 4. Estilos visuales */
+    background-color: rgba(85, 13, 74, .80); /* Color de fondo (puedes usar un color semitransparente si quieres) */
+    border: 1px solid #ccc; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*min-width: 150px; /* Asegura que tenga un ancho mínimo */
+    max-width: 100px;
+    padding: 5px 0;
+}
+
+.botonesOpcion{
+    width: 85px;
+    margin: 4px auto;
+    background-color: rgb(83, 21, 92);
+    color: white;
+    border: 0px solid white;
+}
+
+.botonesOpcion:hover{
+    cursor: pointer;
+}
+
+
+

@@ -10,7 +10,16 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
     const filterList = listaRegalos.filter(gift => categoria === "All" ? gift : gift.categoria == categoria);
 
     return (
+
         <>
+            {filterList.length === 0 && ( //Si la lista está vacía, hazlo saber
+                <p className="pContador">Desea algo para comenzar</p>
+            )}
+
+            {filterList.length > 0 && (
+                <p className="pContador">Hay {filterList.length} deseos pendientes</p>
+            )}
+
             <section className="GiftList">
                 {filterList.map(gift => ( //Para cada objeto de la filterList, crea una Card
                     <Card
@@ -24,18 +33,13 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
                     />
                 ))}
 
-                {filterList.length === 0 && ( //Si la lista está vacía, hazlo saber
-                    <p>No hay regalos</p>
-                )}
-
                 {mostrarInputCard && ( //mostrarInput está activo, entonces muestra el componente
                     <InputCard
                         setMostrarInputCard={setMostrarInputCard}
                         agregarNuevoElemento={agregarNuevoElemento}
                         regaloEditar={regaloEditar}
                         handleEditar={handleEditar}
-
-
+                        categoriaSeleccionada={categoria}
                     />
                 )}
 

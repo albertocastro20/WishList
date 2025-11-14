@@ -2,7 +2,7 @@ import { useState } from "react";
 //Se usa este contador para almacenar el id de las nuevas Cards
 let i = 4;
 
-const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, handleEditar}) => {
+const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, handleEditar, categoriaSeleccionada}) => {
 
 
 
@@ -12,7 +12,7 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
     const [url, setUrl] = useState(regaloEditar ? regaloEditar.link : "");
     const [descripcion, setDescripcion] = useState(regaloEditar ? regaloEditar.descripcion : "");
     const [precio, setPrecio] = useState(regaloEditar ? regaloEditar.costo : "");
-    const [categoriaObjeto, setCategoriaObjeto] = useState(regaloEditar ? regaloEditar.categoria : "");
+    const [categoriaObjeto, setCategoriaObjeto] = useState(regaloEditar ? regaloEditar.categoria : cate);
 
     //Definimos la funcion para que cuando se registre algo, se cree una nueva Card
     function handleRegistro(event) {

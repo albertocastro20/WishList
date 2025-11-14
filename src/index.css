@@ -82,14 +82,14 @@ body{
 .Titulo{
     display: inline-block;
     justify-self: left;
-    margin: 15px auto ;
+    margin: 15px auto 15px 15px ;
 
 }
 
 .botonOpciones{
     display: inline-block;
     justify-content: right;
-    margin: 0.1em .3em auto 6.5em;
+    margin: 0.1em .3em auto 1em;
     background-color: rgba(170, 114, 163, .5);
     border: 1px solid black;
     border-radius: 10px;

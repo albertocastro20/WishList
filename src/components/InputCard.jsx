@@ -2,28 +2,43 @@ import { useState } from "react";
 //Se usa este contador para almacenar el id de las nuevas Cards
 let i = 4;
 
-const InputCard = ({ setMostrarInputCard, agregarNuevoElemento }) => {
-    
+const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, handleEditar}) => {
+
+
+
     //Definimos los estados para cada uno de los campos
-    const [titulo, setTitulo] = useState("");
-    const [urlImagen, setUrlImagen] = useState("");
-    const [url, setUrl] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [precio, setPrecio] = useState("");
-    const [categoriaObjeto, setCategoriaObjeto] = useState("Gifts");
+    const [titulo, setTitulo] = useState(regaloEditar ? regaloEditar.name : "");
+    const [urlImagen, setUrlImagen] = useState(regaloEditar ? regaloEditar.imagen : "");
+    const [url, setUrl] = useState(regaloEditar ? regaloEditar.link : "");
+    const [descripcion, setDescripcion] = useState(regaloEditar ? regaloEditar.descripcion : "");
+    const [precio, setPrecio] = useState(regaloEditar ? regaloEditar.costo : "");
+    const [categoriaObjeto, setCategoriaObjeto] = useState(regaloEditar ? regaloEditar.categoria : "");
 
     //Definimos la funcion para que cuando se registre algo, se cree una nueva Card
     function handleRegistro(event) {
-        event.preventDefault();
-        //Creamos un nuevo objeto con sus campos
-        const objeto = { id: i, name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
+        //Verificamos si se llamó para edición
+        if (regaloEditar) {
+            //Mantenemos el id
+            const regaloActualizado = {id: regaloEditar.id, name: titulo, imagen: urlImagen, 
+                descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
+            handleEditar(regaloActualizado);
+            setMostrarInputCard(false);
+        }
 
-        //Llamamos la funcion de crear un objeto desde App
-        agregarNuevoElemento(objeto);
-        //Aumentamos el contador para una futura Card nueva
-        i++;
-        //Ocultamos el InputCard
-        setMostrarInputCard(false);
+        //O si se crea uno nuevo
+        else {
+            event.preventDefault();
+            //Creamos un nuevo objeto con sus campos
+            const objeto = { id: i, name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
+
+            //Llamamos la funcion de crear un objeto desde App
+            agregarNuevoElemento(objeto);
+            //Aumentamos el contador para una futura Card nueva
+            i++;
+            //Ocultamos el InputCard
+            setMostrarInputCard(false);
+        }
+
     }
 
     return (
@@ -86,14 +101,14 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento }) => {
             <div>
                 <button
                     className="botonRegistrar"
-                    onClick={() => setMostrarInputCard(false)}
+                    onClick={() => setMostrarInputCard(false)} //Solo cambia el state para volver a ocultarlo
                 >
                     Cancelar
                 </button>
 
                 <button
                     className="botonRegistrar"
-                    onClick={handleRegistro}
+                    onClick={handleRegistro} //Llama a la función de arriba
                 >
                     Registrar
                 </button>

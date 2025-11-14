@@ -2,13 +2,13 @@ import { useState } from "react";
 
 const MenuOpciones = ({ onDelete, onChangeState, onEdit, id }) => {
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false); //State para ver si se muestra el menú
 
-    function toggleMenu() {
-        setIsMenuOpen(!isMenuOpen);
-    }
+    
 
     const handleMenuOpcion = (accion) => {
+
+        //Verifica que boton fue presionado, y llama a su respectiva función
         if (accion === "Eliminar") {
             onDelete(id);
         }
@@ -21,19 +21,19 @@ const MenuOpciones = ({ onDelete, onChangeState, onEdit, id }) => {
             onEdit(id);
         }
 
-        setIsMenuOpen(false);
+        setIsMenuOpen(false); //Oculta el menú cuando se presiona un boton
     }
 
     return (
         <>
             <button
-                onClick={toggleMenu}
+                onClick={() => setIsMenuOpen(!isMenuOpen)} //Cambia el estado del state cada que se presiona
                 className="botonOpciones"
             >
                 ...
             </button>
 
-            {isMenuOpen && (
+            {isMenuOpen && ( //Verifica si está abierto el menú
                 <div className="contenedorOpciones">
                     <button
                         className="botonesOpcion"

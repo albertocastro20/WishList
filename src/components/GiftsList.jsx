@@ -3,11 +3,17 @@ import ButtonAddElement from "./AddElementButton";
 import InputCard from "./InputCard";
 
 const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onChangeState,
-    onEdit, mostrarInputCard, setMostrarInputCard, regaloEditar, handleEditar }) => { //Recibe todos los props 
+    onEdit, mostrarInputCard, setMostrarInputCard, regaloEditar, handleEditar, setMostrarMensaje }) => { //Recibe todos los props 
 
     //Crea una lista filtrada de los elementos alojados en la listaRegalos original, dependiendo su categoría
     //Si la categoría es All, retorna el elemento como tal, si no, retorna el objeto si su categoría coincide con la seleccionada
     const filterList = listaRegalos.filter(gift => categoria === "All" ? gift : gift.categoria == categoria);
+    const filterCompletedList = listaRegalos.filter(gift => gift.comprado);
+
+    //Manejo de las cadenas de texto
+    const wishNounCompleted = filterCompletedList.length !== 1 ? "deseos": "deseo";
+    const wishNoun = filterList.length !== 1 ? "deseos": "deseo";
+    
 
     return (
 
@@ -16,8 +22,10 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
                 <p className="pContador">Desea algo para comenzar</p>
             )}
 
-            {filterList.length > 0 && (
-                <p className="pContador">Hay {filterList.length} deseos pendientes</p>
+            {filterList.length > 0 && ( //Si no está vacía, muestra este mensaje
+                <>
+                <p className="pContador">Hay {filterList.length} {wishNoun} pendientes /// Le has cumplido {filterCompletedList.length} {wishNounCompleted}</p>
+                </>
             )}
 
             <section className="GiftList">
@@ -40,6 +48,7 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
                         regaloEditar={regaloEditar}
                         handleEditar={handleEditar}
                         categoriaSeleccionada={categoria}
+                        setMostrarMensaje={setMostrarMensaje}
                     />
                 )}
 

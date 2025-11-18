@@ -197,4 +197,49 @@ body{
 }
 
 
+/*Estilos del mensaje flotante*/
+.mensajeFlotante {
+    visibility: hidden; /* Oculto por defecto */
+    min-width: 250px;
+    margin-left: -125px; /* Centrar */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px; /* Posición inferior */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* Clases para mostrar y ocultar con animación */
+.mensajeFlotante.show {
+    visibility: visible;
+    /* Animación simple de entrada/salida (opcional) */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Definición de animaciones */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
 

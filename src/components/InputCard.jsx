@@ -2,7 +2,8 @@ import { useState } from "react";
 //Se usa este contador para almacenar el id de las nuevas Cards
 let i = 4;
 
-const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, handleEditar, categoriaSeleccionada}) => {
+const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, handleEditar, categoriaSeleccionada,
+    setMostrarMensaje }) => {
 
 
 
@@ -12,32 +13,76 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
     const [url, setUrl] = useState(regaloEditar ? regaloEditar.link : "");
     const [descripcion, setDescripcion] = useState(regaloEditar ? regaloEditar.descripcion : "");
     const [precio, setPrecio] = useState(regaloEditar ? regaloEditar.costo : "");
-    const [categoriaObjeto, setCategoriaObjeto] = useState(regaloEditar ? regaloEditar.categoria : cate);
+    const [categoriaObjeto, setCategoriaObjeto] = useState(regaloEditar ? regaloEditar.categoria : categoriaSeleccionada);
+
+
+
+    //Función para verificar los campos
+    function verificarCampos() {
+        //Validar campos de texto obligatorios
+        if (titulo.trim() === '') {
+            alert("El campo Título es obligatorio.");
+            return false;
+        }
+        if (descripcion.trim() === '') {
+            alert("El campo Descripción es obligatorio.");
+            return false;
+        }
+        if (urlImagen.trim() === '') {
+            alert("La URL de la imagen es obligatoria.");
+            return false;
+        }
+
+        // Validamos que el precio sea un número válido y que no esté vacía
+        if (precio === '' || isNaN(Number(precio)) || Number(precio) <= 0) {
+            alert("El precio debe ser un número válido y mayor que cero.");
+            return false;
+        }
+        // Si todas las comprobaciones pasan, los campos son válidos
+        return true;
+    }
+
 
     //Definimos la funcion para que cuando se registre algo, se cree una nueva Card
     function handleRegistro(event) {
-        //Verificamos si se llamó para edición
-        if (regaloEditar) {
-            //Mantenemos el id
-            const regaloActualizado = {id: regaloEditar.id, name: titulo, imagen: urlImagen, 
-                descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
-            handleEditar(regaloActualizado);
-            setMostrarInputCard(false);
+        if (verificarCampos()) {
+            //Verificamos si se llamó para edición
+            if (regaloEditar) {
+                //Mantenemos el id
+                const regaloActualizado = {
+                    id: regaloEditar.id, name: titulo, imagen: urlImagen, comprado: regaloEditar.comprado,
+                    descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url
+                };
+                handleEditar(regaloActualizado);
+                setMostrarInputCard(false);
+            }
+
+            //O si se crea uno nuevo
+            else {
+                event.preventDefault();
+                //Creamos un nuevo objeto con sus campos
+                const objeto = { id: i, name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
+
+                //Llamamos la funcion de crear un objeto desde App
+                agregarNuevoElemento(objeto);
+                //Aumentamos el contador para una futura Card nueva
+                i++;
+                //Ocultamos el InputCard
+                setMostrarInputCard(false);
+            }
+
+            //Si se completa cualquiera de los dos, muestra el mensaje
+            setMostrarMensaje(true);
+            //Cambia el state después de 3 segundos
+            setTimeout(() => {
+               setMostrarMensaje(false);
+            }, 3000);
         }
 
-        //O si se crea uno nuevo
         else {
-            event.preventDefault();
-            //Creamos un nuevo objeto con sus campos
-            const objeto = { id: i, name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
-
-            //Llamamos la funcion de crear un objeto desde App
-            agregarNuevoElemento(objeto);
-            //Aumentamos el contador para una futura Card nueva
-            i++;
-            //Ocultamos el InputCard
-            setMostrarInputCard(false);
+            alert("Error en los campos");
         }
+
 
     }
 

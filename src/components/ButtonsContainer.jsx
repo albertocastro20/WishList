@@ -1,6 +1,12 @@
 import FilterButton from "./FilterButtons";
 
-const ButtonsContainer = ({ categorias, setCategoria, estatus, setEstatus }) => {
+const ButtonsContainer = ({ categorias, setCategoria, estatus, setEstatus,
+    busqueda, setBusqueda }) => {
+
+    function handleChange(event) {
+        setBusqueda(event.target.value);
+
+    }
     return (
         <div className="contenedorBotones">
             {/*para carda categoría, crea un boton */}
@@ -50,6 +56,16 @@ const ButtonsContainer = ({ categorias, setCategoria, estatus, setEstatus }) => 
                     />
                     Pendientes
                 </label>
+            </div>
+
+            <div className="contenedorBarraBusqueda">
+                <input
+                    type="text"
+                    placeholder="Buscar algún deseo"
+                    className="barraBusqueda"
+                    value={busqueda}
+                    onChange={(event) => setBusqueda(event.target.value)}
+                /> 🔎
             </div>
         </div>
     );

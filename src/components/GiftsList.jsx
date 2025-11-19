@@ -3,11 +3,13 @@ import ButtonAddElement from "./AddElementButton";
 import InputCard from "./InputCard";
 
 const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onChangeState, estatus,
-    onEdit, mostrarInputCard, setMostrarInputCard, regaloEditar, handleEditar, setMostrarMensaje }) => { //Recibe todos los props 
+    onEdit, mostrarInputCard, setMostrarInputCard, regaloEditar, handleEditar, setMostrarMensaje, busqueda }) => { //Recibe todos los props 
 
     //Crea una lista filtrada de los elementos alojados en la listaRegalos original, dependiendo su categoría
     //Si la categoría es All, retorna el elemento como tal, si no, retorna el objeto si su categoría coincide con la seleccionada
     //const filterList = listaRegalos.filter(gift => categoria === "All" ? true : gift.categoria === categoria);
+
+    const busquedaNormalizada = busqueda.toLowerCase().trim();
     const filterList = listaRegalos.filter(gift =>
         // Condición de Categoría 
         (categoria === "All" || gift.categoria === categoria)
@@ -19,6 +21,13 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
             (estatus === "Comprado" && gift.comprado) ||
             (estatus === "Pendiente" && !gift.comprado)
         )
+
+        &&
+
+        //COndición de la barra de búsqueda
+        (gift.name.toLowerCase().includes(busquedaNormalizada) ||
+            gift.descripcion.toLowerCase().includes(busquedaNormalizada))
+
     );
     const filterCompletedList = filterList.filter(gift => gift.comprado);
 

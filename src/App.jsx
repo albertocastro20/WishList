@@ -1,6 +1,6 @@
 
 //Importaciones que vamos a necesitar
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ButtonsContainer from './components/ButtonsContainer'
 import GiftList from './components/GiftsList'
 import MensajeFlotante from './components/PopUp'
@@ -11,7 +11,8 @@ import { MOCK_REGALOS, CATEGORIES, ESTATUS } from './data/datosPrueba'
 import './App.css'
 
 function App() {
-  const regalos = MOCK_REGALOS; //Definimos las constante que tendrá nuestros regalos preestablecidos
+  const regalosLS = localStorage.getItem("deseos");
+  const regalos = regalosLS ? JSON.parse(regalosLS) : MOCK_REGALOS; //Definimos las constante que tendrá nuestros regalos preestablecidos
 
   //Definición de los states
   const [listaRegalos, setListaregalos] = useState(regalos); //Tiene la lista de regalos y registra los cambios en ella
@@ -19,7 +20,16 @@ function App() {
   const [mostrarInputCard, setMostrarInputCard] = useState(false); //State que registrará si se muestra o no la InputCard
   const [regaloEditar, setRegaloEditar] = useState(null); //State que almacenará el objeto que se va a edutar
   const [mostrarMensaje, setMostrarMensaje] = useState(false); //Maneja el estado del mensaje flotante
-  const [estatus, setEstatus] = useState("All");
+  const [estatus, setEstatus] = useState("All"); //Controla el segundo filtro
+  const [busqueda, setBusqueda] = useState(""); //Controla la banda de búsqueda
+
+  useEffect(() => {
+    almacenarLS(listaRegalos);
+  }, [listaRegalos]);
+
+  function almacenarLS(lista) {
+    localStorage.setItem("deseos", JSON.stringify(lista));
+  }
 
 
   //Función para agregar un nuevo objeto
@@ -52,6 +62,7 @@ function App() {
     });
 
     setListaregalos(nuevaListaRegalos);
+
   }
 
 
@@ -78,20 +89,26 @@ function App() {
     })
 
     setListaregalos(nuevaListaRegalos); //Actuazlizamos la lista
+
     setRegaloEditar(null); //Vaciamos el regalo que almacenamos en la otra función
 
   }
 
+
+
   return (
     <>
-      <h1>Girlfriend's whishlist</h1>
+      <h1>💞 Girlfriend's whishlist 💞</h1>
 
       <ButtonsContainer
         categorias={CATEGORIES} //Le pasamos las categorías 
         setCategoria={setCategoria} //Le pasamos el set para elegir que categoría está activa
         estatus={estatus}
         setEstatus={setEstatus}
-        
+
+        busqueda={busqueda}
+        setBusqueda={setBusqueda}
+
       />
 
       <p className='categoriaMostrada'>La categoría mostrada es: {categoria}</p>
@@ -113,6 +130,8 @@ function App() {
         setMostrarInputCard={setMostrarInputCard}
 
         setMostrarMensaje={setMostrarMensaje}
+
+        busqueda={busqueda}
 
       />
 

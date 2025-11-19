@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 //Se usa este contador para almacenar el id de las nuevas Cards
-let i = 4;
+//let i = 4;
 
 const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, handleEditar, categoriaSeleccionada,
     setMostrarMensaje }) => {
@@ -61,12 +62,12 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
             else {
                 event.preventDefault();
                 //Creamos un nuevo objeto con sus campos
-                const objeto = { id: i, name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
+                const objeto = { id: uuidv4(), name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
 
                 //Llamamos la funcion de crear un objeto desde App
                 agregarNuevoElemento(objeto);
                 //Aumentamos el contador para una futura Card nueva
-                i++;
+
                 //Ocultamos el InputCard
                 setMostrarInputCard(false);
             }
@@ -75,7 +76,7 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
             setMostrarMensaje(true);
             //Cambia el state después de 3 segundos
             setTimeout(() => {
-               setMostrarMensaje(false);
+                setMostrarMensaje(false);
             }, 3000);
         }
 
@@ -97,13 +98,18 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
                 onChange={(event) => setTitulo(event.target.value)}
             />
 
-            <input
-                className="imagenCard"
-                type="text"
-                placeholder="URL de la imagen"
-                value={urlImagen}
-                onChange={(event) => setUrlImagen(event.target.value)}
-            />
+            <label>
+                🔗
+                <input
+                    className="imagenCard"
+                    type="text"
+                    placeholder="URL de la imagen"
+                    value={urlImagen}
+                    onChange={(event) => setUrlImagen(event.target.value)}
+                />
+
+            </label>
+
 
             <textarea
                 className="descripcionInput"
@@ -135,9 +141,9 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
                     value={categoriaObjeto}
                     onChange={(event) => setCategoriaObjeto(event.target.value)}
                 >
-                    <option value="Gifts">Gift</option>
-                    <option value="Travels">Travel</option>
-                    <option value="Dates">Date</option>
+                    <option value="Gifts">🎁Gifts</option>
+                    <option value="Travels">🛬Travel</option>
+                    <option value="Dates">💕Date</option>
                 </select>
 
             </div>

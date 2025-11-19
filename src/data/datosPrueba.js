@@ -6,6 +6,7 @@ export const MOCK_REGALOS = [
     { id: 2, name: "Funko Dracu", imagen: "https://http2.mlstatic.com/D_NQ_NP_914351-MLA95655427083_102025-O.webp", descripcion: "Es un funko de dracu", costo: 400, link: "https://a.co/d/6SEkjMm", categoria: "Gifts", comprado: false},
     { id: 3, name: "Lego de UP", imagen: "https://wafuu.com/cdn/shop/products/lego-disney-up-house-43217-building-toy-set-934403.jpg?v=1706143660", descripcion: "Es un set de LEGO", costo: 650, link: "https://a.co/d/cAjF9at", categoria: "Gifts", comprado: false},
     
+    /*
     // --- NUEVOS DATOS AGREGADOS ---
     { id: 4, name: "Viaje a la Playa", imagen: "https://images.unsplash.com/photo-1543884807-6b453e9a7e93?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", descripcion: "Escapada romántica de fin de semana.", costo: 7500, link: "https://travel.com/beach", categoria: "Travels", comprado: false},
     { id: 5, name: "Cena Italiana", imagen: "https://images.unsplash.com/photo-1555939225-b4676156e7e5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", descripcion: "Pasta hecha en casa y buen vino.", costo: 850, link: "https://dateideas.com/italian", categoria: "Dates", comprado: true},
@@ -24,6 +25,7 @@ export const MOCK_REGALOS = [
     { id: 18, name: "Masaje de Pareja", imagen: "https://images.unsplash.com/photo-1600334862590-739462d7c5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", descripcion: "Una tarde de relajación.", costo: 1600, link: "https://dateideas.com/massage", categoria: "Dates", comprado: true},
     { id: 19, name: "Escala al Nevado de Toluca", imagen: "https://images.unsplash.com/photo-1601614769062-87063d82054c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", descripcion: "Aventura en la nieve.", costo: 900, link: "https://travel.com/nevado", categoria: "Travels", comprado: true},
     { id: 20, name: "Curso de Fotografía", imagen: "https://images.unsplash.com/photo-1588661706684-2af2d5d8a946?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", descripcion: "Para mejorar nuestras fotos de viaje.", costo: 700, link: "https://a.co/d/gHiJkLm", categoria: "Gifts", comprado: false}
+     */
 ];
 
 //Estas son las categorías que tendremos

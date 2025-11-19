@@ -274,3 +274,59 @@ body{
     to {bottom: 0; opacity: 0;}
 }
 
+
+
+/* Estilos para diferentes dispositivos*/
+@media (max-width: 600px) {
+
+    /* Los botones, el estatus y la búsqueda deben ir en columna. */
+    .contenedorBotones {
+        flex-direction: column; /* Apila todos los elementos verticalmente */
+        align-items: center;    /* Centra los elementos horizontalmente */
+    }
+
+    .contenedorEstatus {
+        margin-left: 0;
+        margin-top: 15px; /* Añade espacio arriba */
+    }
+
+    .contenedorBarraBusqueda {
+        margin-left: 0; /* Elimina el margen fijo de 15em */
+        margin-top: 15px;
+        width: 90%; /* Ocupa casi todo el ancho disponible */
+        display: flex; /* Asegura que el contenido interno (barra) se centre */
+        justify-content: center;
+    }
+
+    .barraBusqueda {
+        width: 95%; /* Asegura que la barra de búsqueda use el ancho del contenedor */
+        max-width: 300px; /* Limita un poco para no ser demasiado ancha en tabletas */
+    }
+
+}
+
+/*Estilos para el apartado de la lista*/
+@media (max-width: 600px) {
+    
+    .GiftList {
+        /* Permite que las tarjetas se centren si no llenan la pantalla */
+        justify-content: center; 
+        
+        /* Reduce un poco el alto máximo para que ocupe más espacio visible de la pantalla */
+        max-height: 500px; 
+    }
+    
+    .Card {
+        /* Reduce un poco el ancho y alto para que quepa mejor en pantallas estrechas */
+        width: 90%; /* Ocupa el 90% del ancho del contenedor */
+        max-width: 300px; /* Pero no excede un tamaño fijo */
+        height: auto; /* Permite que la altura se ajuste al contenido */
+        margin: 10px 0; /* Margen vertical para separarlas */
+    }
+
+    /* Si las imágenes son muy grandes, asegúrate de que se ajusten al ancho de la Card */
+    .imagenCard img {
+        max-width: 100%;
+        height: auto;
+    }
+}

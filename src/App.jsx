@@ -11,7 +11,7 @@ import { MOCK_REGALOS, CATEGORIES, ESTATUS } from './data/datosPrueba'
 import './App.css'
 
 function App() {
-  const regalosLS = localStorage.getItem("deseos");
+  const regalosLS = localStorage.getItem("deseos"); //Obtenemos los datos almacenados en LS
   const regalos = regalosLS ? JSON.parse(regalosLS) : MOCK_REGALOS; //Definimos las constante que tendrá nuestros regalos preestablecidos
 
   //Definición de los states
@@ -23,12 +23,13 @@ function App() {
   const [estatus, setEstatus] = useState("All"); //Controla el segundo filtro
   const [busqueda, setBusqueda] = useState(""); //Controla la banda de búsqueda
 
+  //Usamos este hook para que se ejecute la función cada que listaRegalos cambie
   useEffect(() => {
     almacenarLS(listaRegalos);
   }, [listaRegalos]);
 
   function almacenarLS(lista) {
-    localStorage.setItem("deseos", JSON.stringify(lista));
+    localStorage.setItem("deseos", JSON.stringify(lista)); //Usamos LS para almacenarlo 
   }
 
 

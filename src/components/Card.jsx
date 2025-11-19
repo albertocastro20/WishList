@@ -25,7 +25,10 @@ const Card = ({ gift, onDelete, onChangeState, onEdit }) => {
                 <img className="imagenCard" height={100} src={imagen} />
             </a>
 
-            <p className="descripcion">{descripcion}</p>
+            <div className="contenedorDescripcion">
+                <p className="descripcion">{descripcion}</p>
+            </div>
+
             <p className="Costo">Costo: ${costo}</p>
         </div>
 

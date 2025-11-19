@@ -29,6 +29,15 @@ body{
     
 }
 
+.contenedorEstatus{
+    align-self: center;
+    margin-left: 30px;
+}
+
+.categoriaMostrada{
+    justify-self: left;
+}
+
 .pContador{
     justify-self: left;
     background-color: rgba(131, 25, 108, 0.3);
@@ -63,7 +72,7 @@ body{
 /* Estilos para la Card con datos que contiene los objetos */
 
 .Card:hover{
-    background-color: white;
+    background-color: rgb(240, 240, 240);
 }
 
 .Card{
@@ -77,6 +86,7 @@ body{
     border: 2px solid black;
     border-radius: 5px;
     margin: 5px;
+    transition: background-color 0.5s ease; /*Se le agrega un efecto visual de transición*/
 
 }
 
@@ -85,7 +95,7 @@ body{
 }
 
 .comprado:hover{
-    background-color: aqua !important;
+    background-color: rgb(180, 120, 170) !important;
 }
 
 .contenedorTitulo{
@@ -110,6 +120,11 @@ body{
 
 .imagenCard{
     align-self: center;
+}
+
+.contenedorDescripcion{
+    overflow-y: auto;
+    max-height: 95px;
 }
 
 /* Estilo para el boton de agregar un nuevo item */
@@ -182,6 +197,8 @@ body{
     /*min-width: 150px; /* Asegura que tenga un ancho mínimo */
     max-width: 100px;
     padding: 5px 0;
+    pointer-events: none;
+    
 }
 
 .botonesOpcion{
@@ -190,6 +207,7 @@ body{
     background-color: rgb(83, 21, 92);
     color: white;
     border: 0px solid white;
+    pointer-events: auto;
 }
 
 .botonesOpcion:hover{

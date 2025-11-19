@@ -2,18 +2,30 @@ import Card from "./Card";
 import ButtonAddElement from "./AddElementButton";
 import InputCard from "./InputCard";
 
-const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onChangeState,
+const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onChangeState, estatus,
     onEdit, mostrarInputCard, setMostrarInputCard, regaloEditar, handleEditar, setMostrarMensaje }) => { //Recibe todos los props 
 
     //Crea una lista filtrada de los elementos alojados en la listaRegalos original, dependiendo su categoría
     //Si la categoría es All, retorna el elemento como tal, si no, retorna el objeto si su categoría coincide con la seleccionada
-    const filterList = listaRegalos.filter(gift => categoria === "All" ? gift : gift.categoria == categoria);
-    const filterCompletedList = listaRegalos.filter(gift => gift.comprado);
+    //const filterList = listaRegalos.filter(gift => categoria === "All" ? true : gift.categoria === categoria);
+    const filterList = listaRegalos.filter(gift =>
+        // Condición de Categoría 
+        (categoria === "All" || gift.categoria === categoria)
+
+        &&
+
+        //Condición de Estatus
+        (estatus === "All" ||
+            (estatus === "Comprado" && gift.comprado) ||
+            (estatus === "Pendiente" && !gift.comprado)
+        )
+    );
+    const filterCompletedList = filterList.filter(gift => gift.comprado);
 
     //Manejo de las cadenas de texto
-    const wishNounCompleted = filterCompletedList.length !== 1 ? "deseos": "deseo";
-    const wishNoun = filterList.length !== 1 ? "deseos": "deseo";
-    
+    const wishNounCompleted = filterCompletedList.length !== 1 ? "deseos" : "deseo";
+    const wishNoun = (filterList.length - filterCompletedList.length) !== 1 ? "deseos" : "deseo";
+
 
     return (
 
@@ -24,7 +36,7 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
 
             {filterList.length > 0 && ( //Si no está vacía, muestra este mensaje
                 <>
-                <p className="pContador">Hay {filterList.length} {wishNoun} pendientes /// Le has cumplido {filterCompletedList.length} {wishNounCompleted}</p>
+                    <p className="pContador">Hay {filterList.length - filterCompletedList.length} {wishNoun} pendientes /// Le has cumplido {filterCompletedList.length} {wishNounCompleted}</p>
                 </>
             )}
 

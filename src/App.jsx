@@ -26,6 +26,7 @@ function App() {
   //Usamos este hook para que se ejecute la función cada que listaRegalos cambie
   useEffect(() => {
     almacenarLS(listaRegalos);
+    console.log(listaRegalos);
   }, [listaRegalos]);
 
   function almacenarLS(lista) {
@@ -45,6 +46,11 @@ function App() {
     //Recibe el id y busca cual coincide, creando un nuevo arreglo sin el objeto que coindide
     const nuevaListaRegalos = [...listaRegalos.filter(gift => gift.id !== regalo)];
     //Acualiza el state
+    setListaregalos(nuevaListaRegalos);
+  }
+
+  function onDeleteAll(){
+    const nuevaListaRegalos = [];
     setListaregalos(nuevaListaRegalos);
   }
 
@@ -125,6 +131,7 @@ function App() {
         onEdit={onEdit}
         regaloEditar={regaloEditar} //Regalo obtenido para trabajar con el en InputCard
         handleEditar={handleEditar}
+        onDeleteAll={onDeleteAll}
 
         //Se usan para ver si aparece InputCard
         mostrarInputCard={mostrarInputCard}

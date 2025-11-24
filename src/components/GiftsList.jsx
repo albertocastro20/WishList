@@ -2,7 +2,7 @@ import Card from "./Card";
 import ButtonAddElement from "./AddElementButton";
 import InputCard from "./InputCard";
 
-const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onChangeState, estatus,
+const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onChangeState, estatus, onDeleteAll,
     onEdit, mostrarInputCard, setMostrarInputCard, regaloEditar, handleEditar, setMostrarMensaje, busqueda }) => { //Recibe todos los props 
 
     //Crea una lista filtrada de los elementos alojados en la listaRegalos original, dependiendo su categoría
@@ -39,6 +39,7 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
     return (
 
         <>
+
             {filterList.length === 0 && ( //Si la lista está vacía, hazlo saber
                 <p className="pContador">Desea algo para comenzar</p>
             )}
@@ -48,6 +49,15 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
                     <p className="pContador">Hay {filterList.length - filterCompletedList.length} {wishNoun} pendientes /// Le has cumplido {filterCompletedList.length} {wishNounCompleted}</p>
                 </>
             )}
+
+            <button
+                className="botonEliminar"
+                onClick={() => onDeleteAll()}
+            >
+                Vaciar toda la lista
+            </button>
+
+
 
             <section className="GiftList">
                 {filterList.map(gift => ( //Para cada objeto de la filterList, crea una Card

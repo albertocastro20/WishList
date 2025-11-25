@@ -11,11 +11,12 @@ import { MOCK_REGALOS, CATEGORIES, ESTATUS } from './data/datosPrueba'
 import './App.css'
 
 function App() {
-  const regalosLS = localStorage.getItem("deseos"); //Obtenemos los datos almacenados en LS
-  const regalos = regalosLS ? JSON.parse(regalosLS) : MOCK_REGALOS; //Definimos las constante que tendrá nuestros regalos preestablecidos
 
   //Definición de los states
-  const [listaRegalos, setListaregalos] = useState(regalos); //Tiene la lista de regalos y registra los cambios en ella
+  //States para hacer el fetch
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [listaRegalos, setListaRegalos] = useState([]); //Tiene la lista de regalos y registra los cambios en ella
   const [categoria, setCategoria] = useState("All"); //Registra que categoría se está mostrando
   const [mostrarInputCard, setMostrarInputCard] = useState(false); //State que registrará si se muestra o no la InputCard
   const [regaloEditar, setRegaloEditar] = useState(null); //State que almacenará el objeto que se va a edutar
@@ -23,52 +24,147 @@ function App() {
   const [estatus, setEstatus] = useState("All"); //Controla el segundo filtro
   const [busqueda, setBusqueda] = useState(""); //Controla la banda de búsqueda
 
-  //Usamos este hook para que se ejecute la función cada que listaRegalos cambie
+  //Usamos este hook para crear los datos iniciales
   useEffect(() => {
-    almacenarLS(listaRegalos);
-    console.log(listaRegalos);
-  }, [listaRegalos]);
+    //Definimos la función asíncrona dentro del hook
+    async function fetchRegalos() {
+      try {
+        // Petición a la API y espera de la respuesta
+        const urlAPIGET = 'https://692437783ad095fb84733298.mockapi.io/api/v1/regalos';
+        const response = await fetch(urlAPIGET);
 
-  function almacenarLS(lista) {
-    localStorage.setItem("deseos", JSON.stringify(lista)); //Usamos LS para almacenarlo 
-  }
+        //  Verificación de si la respuesta HTTP es exitosa 
+        if (!response.ok) {
+          throw new Error(`Error HTTP! Estado: ${response.status}`);
+        }
+
+        // Convierte la respuesta a objeto JSON
+        const data = await response.json();
+
+        //  Mapeo de los datos de la API a la estructura de tu regalo
+        const regalosAPI = data.map(item => ({
+          id: item.id,
+          name: item.name,
+          comprado: item.comprado,
+          descripcion: item.descripcion,
+          costo: item.costo, 
+          categoria: item.categoria,
+          link: item.link,
+          imagen: item.imagen
+        }));
+
+        //  Actualización del estado exitosa
+        setListaRegalos(regalosAPI);
+        setError(null);
+
+      } catch (e) {
+        // Manejo de errores de red/parsing
+        setError("Error al cargar los regalos del servidor.");
+        console.error("Error fetching data: ", e);
+      } finally {
+        // Finaliza el estado de carga, sin importar el resultado
+        setLoading(false);
+      }
+    }
+
+    fetchRegalos();
+  }, []);
+
+  // Lógica de renderizado condicional basada en el estado:
+  if (loading) return <h1>Cargando regalos...</h1>;
+  if (error) return <h1 style={{ color: 'red' }}>¡Error! {error}</h1>;
+
 
 
   //Función para agregar un nuevo objeto
-  function agregarNuevoElemento(nuevoRegalo) {
-    const nuevaListaRegalos = [...listaRegalos, nuevoRegalo]; //Mantenemos todo el array como estaba y solo agregamos el nuevo elemento
-    setListaregalos(nuevaListaRegalos);//Y actualizamos el state para que se re-renderice
+  async function agregarNuevoElemento(nuevoRegalo) {
+    try{
+      const urlAPIPOST = 'https://692437783ad095fb84733298.mockapi.io/api/v1/regalos'; //Especificamos el endpoint
+      const response = await fetch(urlAPIPOST, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(nuevoRegalo)
+      });
+
+      if(!response.ok){
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+
+      const regaloCreado = await response.json();
+
+      console.log(regaloCreado);
+      setListaRegalos(listaRegalos => [...listaRegalos, regaloCreado]); //Actualizamos el state
+    }
+
+    catch(error){
+      console.error("Error en POST:", error);
+    }
 
   }
 
   //Se usa para eliminar un objeto del array
-  function onDelete(regalo) {
-    //Recibe el id y busca cual coincide, creando un nuevo arreglo sin el objeto que coindide
-    const nuevaListaRegalos = [...listaRegalos.filter(gift => gift.id !== regalo)];
-    //Acualiza el state
-    setListaregalos(nuevaListaRegalos);
+  async function onDelete(regalo) {
+
+    const idRegalo = String(regalo)
+    try{
+      const urlAPIDELETE = 'https://692437783ad095fb84733298.mockapi.io/api/v1/regalos/'+idRegalo;
+      const response = await fetch(urlAPIDELETE, {
+        method: 'DELETE',
+      });
+
+      if(!response.ok){
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+
+      const regaloCreado = await response.json();
+
+      setListaRegalos(listaRegalos => listaRegalos.filter(gift => gift.id !== regalo));
+    }
+    catch(error){
+      console.error("Error en DELETE:", error);
+    }
+    
   }
 
-  function onDeleteAll(){
+  function onDeleteAll() {
     const nuevaListaRegalos = [];
-    setListaregalos(nuevaListaRegalos);
+    setListaRegalos(nuevaListaRegalos);
   }
 
   //Esto cambiará el objeto a un estado en el que ya se "completó"
-  function onChangeState(regaloRecibido) {
-    //Mapeamos para mantener el arreglo
-    const nuevaListaRegalos = listaRegalos.map(regalo => {
-      //Con esta condicional  obtenemos el regalo que coincida con el id que viene del boton que se presionó
-      if (regalo.id === regaloRecibido) {
-        return {
-          ...regalo, comprado: !regalo.comprado //Modificamos el "comprado"
-        };
+  async function onChangeState(regaloID) {
+    
+    const regaloBase = listaRegalos.find(gift => gift.id === regaloID);
+    const nuevoEstadoRegalo = {
+      ...regaloBase, comprado: !regaloBase.comprado
+    };
 
+    
+    
+    try{
+      const urlAPIPOST = 'https://692437783ad095fb84733298.mockapi.io/api/v1/regalos/'+regaloID;
+      const response = await fetch(urlAPIPOST, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(nuevoEstadoRegalo)
+      });
+
+      if(!response.ok){
+        throw new Error(`Error HTTP: ${response.status}`);
       }
-      return regalo; //Si no coincide el id, se mantiene el elemento tal como está 
-    });
+      
+      setListaRegalos(listaRegalos =>
+         listaRegalos.map(gift =>
+           gift.id === regaloID ? nuevoEstadoRegalo : gift));
+    }
 
-    setListaregalos(nuevaListaRegalos);
+    catch(error){
+      console.error("Error en PUT:", error);
+    }
 
   }
 
@@ -85,24 +181,35 @@ function App() {
   }
 
   //Función de editar que trabajará con los states y el almacenamiento del objeto
-  function handleEditar(regaloActualizado) { //Este es un objeto de tipo regalo
-    const nuevaListaRegalos = listaRegalos.map(regalo => {
-      //Buscamos el objeto que coincida con el id del regalo que viene editado
-      if (regalo.id === regaloActualizado.id) {
-        return regaloActualizado; //Lo almacenamos tal y como está el actualizado
+  async function handleEditar(regaloActualizado) { //Este es un objeto de tipo regalo
+    const idRegalo = String(regaloActualizado.id)
+    try{
+      const urlAPIPOST = 'https://692437783ad095fb84733298.mockapi.io/api/v1/regalos/'+idRegalo;
+      const response = await fetch(urlAPIPOST, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(regaloActualizado)
+      });
+
+      if(!response.ok){
+        throw new Error(`Error HTTP: ${response.status}`);
       }
+      
+      setListaRegalos(listaRegalos =>
+         listaRegalos.map(gift =>
+           gift.id === regaloActualizado.id ? regaloActualizado : gift));
+    }
 
-      return regalo; //Si no coincide, se mantiene como está
-    })
-
-    setListaregalos(nuevaListaRegalos); //Actuazlizamos la lista
+    catch(error){
+      console.error("Error en PUT:", error);
+    }
 
     setRegaloEditar(null); //Vaciamos el regalo que almacenamos en la otra función
 
   }
-
-
-
+  
   return (
     <>
       <h1>💞 Girlfriend's whishlist 💞</h1>

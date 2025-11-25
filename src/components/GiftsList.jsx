@@ -25,8 +25,8 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
         &&
 
         //COndición de la barra de búsqueda
-        (gift.name.toLowerCase().includes(busquedaNormalizada) ||
-            gift.descripcion.toLowerCase().includes(busquedaNormalizada))
+        ((gift.name ?? "").toLowerCase().includes(busquedaNormalizada) ||
+            (gift.descripcion ?? "").toLowerCase().includes(busquedaNormalizada))
 
     );
     const filterCompletedList = filterList.filter(gift => gift.comprado);
@@ -50,12 +50,12 @@ const GiftList = ({ categoria, listaRegalos, agregarNuevoElemento, onDelete, onC
                 </>
             )}
 
-            <button
+            {/*<button
                 className="botonEliminar"
                 onClick={() => onDeleteAll()}
             >
                 Vaciar toda la lista
-            </button>
+            </button>*/}
 
 
 

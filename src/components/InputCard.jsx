@@ -62,7 +62,7 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
             else {
                 event.preventDefault();
                 //Creamos un nuevo objeto con sus campos
-                const objeto = { id: uuidv4(), name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url };
+                const objeto = { id: uuidv4(), name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url, comprado: false};
 
                 //Llamamos la funcion de crear un objeto desde App
                 agregarNuevoElemento(objeto);

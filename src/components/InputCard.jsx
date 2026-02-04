@@ -14,7 +14,7 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
     const [url, setUrl] = useState(regaloEditar ? regaloEditar.link : "");
     const [descripcion, setDescripcion] = useState(regaloEditar ? regaloEditar.descripcion : "");
     const [precio, setPrecio] = useState(regaloEditar ? regaloEditar.costo : "");
-    const [categoriaObjeto, setCategoriaObjeto] = useState(regaloEditar ? regaloEditar.categoria : categoriaSeleccionada);
+    const [categoriaObjeto, setCategoriaObjeto] = useState(regaloEditar ? regaloEditar.categoria : "G");
 
 
 
@@ -62,7 +62,7 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
             else {
                 event.preventDefault();
                 //Creamos un nuevo objeto con sus campos
-                const objeto = { id: uuidv4(), name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url, comprado: false};
+                const objeto = { name: titulo, imagen: urlImagen, descripcion: descripcion, costo: precio, categoria: categoriaObjeto, link: url, comprado: false};
 
                 //Llamamos la funcion de crear un objeto desde App
                 agregarNuevoElemento(objeto);
@@ -141,9 +141,9 @@ const InputCard = ({ setMostrarInputCard, agregarNuevoElemento, regaloEditar, ha
                     value={categoriaObjeto}
                     onChange={(event) => setCategoriaObjeto(event.target.value)}
                 >
-                    <option value="Gifts">🎁Gifts</option>
-                    <option value="Travels">🛬Travel</option>
-                    <option value="Dates">💕Date</option>
+                    <option value="G">🎁Gifts</option>
+                    <option value="T">🛬Travel</option>
+                    <option value="D">💕Date</option>
                 </select>
 
             </div>

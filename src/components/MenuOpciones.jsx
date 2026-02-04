@@ -4,8 +4,6 @@ const MenuOpciones = ({ onDelete, onChangeState, onEdit, id }) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false); //State para ver si se muestra el menú
 
-    
-
     const handleMenuOpcion = (accion) => {
 
         //Verifica que boton fue presionado, y llama a su respectiva función

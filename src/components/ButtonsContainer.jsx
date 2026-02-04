@@ -27,6 +27,7 @@ const ButtonsContainer = ({ categorias, setCategoria, estatus, setEstatus,
                         type="radio"
                         name="filtroEstatus" // Mismo nombre para el grupo
                         value="All"
+                        className="radioCategorias"
                         checked={estatus === "All"} // Está seleccionado si estatus es "All"
                         onChange={() => setEstatus("All")} // Llama al setter para cambiar el estado
                     />
@@ -39,6 +40,7 @@ const ButtonsContainer = ({ categorias, setCategoria, estatus, setEstatus,
                         type="radio"
                         name="filtroEstatus"
                         value="Comprado"
+                        className="radioCategorias"
                         checked={estatus === "Comprado"}
                         onChange={() => setEstatus("Comprado")}
                     />
@@ -51,6 +53,7 @@ const ButtonsContainer = ({ categorias, setCategoria, estatus, setEstatus,
                         type="radio"
                         name="filtroEstatus"
                         value="Pendiente"
+                        className="radioCategorias"
                         checked={estatus === "Pendiente"}
                         onChange={() => setEstatus("Pendiente")}
                     />

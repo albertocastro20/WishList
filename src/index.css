@@ -16,6 +16,10 @@ body{
     
 }
 
+.radioCategorias{
+    cursor: pointer;
+}
+
 .GiftList{
     display: flex;
     flex-wrap: wrap;
@@ -116,6 +120,8 @@ body{
     transition: background-color 0.5s ease; /*Se le agrega un efecto visual de transición*/
 
 }
+
+
 
 .comprado{
     background-color: rgb(146, 70, 136) !important ;
@@ -343,4 +349,78 @@ body{
         max-width: 100%;
         height: auto;
     }
+}
+
+
+
+/*Estilos para el LoginPage*/
+.LoginFormContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.inputLogin{
+    margin: 5px;
+    width: 250px;
+    border-radius: 5px;
+    height: 20px;
+    border: 2px solid black;
+    background-color: pink;
+    
+}
+
+.botonLogin{
+    border: 1px solid black;
+    background-color: rgb(221, 209, 209);
+    color: rgb(0, 0, 0);
+    margin: 6px;
+    font-size: 13px;
+    width: 200px;
+    background-color: rgb(214, 161, 179);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.up{
+    
+    display: flex;
+    width: 1250px;
+    
+}
+
+.infoUser{
+    width: 350px;
+    margin-left: 450px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.logoutButton{
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    margin: 17px 40px;
+    font-size: 13px;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(214, 161, 179);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.logoutButton:hover{
+    background-color: black;
+    color: white;
+}
+
+
+.logoutButton:active{
+    background-color: white;
+    color: black;
+}
+
+.saludo{
+    width: 300px;
 }

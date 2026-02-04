@@ -22,3 +22,41 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# === GENERAL ===
+node_modules/
+.DS_Store
+.env
+*.env.local
+
+# === FRONTEND (giftory) ===
+giftory/node_modules/
+giftory/dist/
+giftory/build/
+
+# === BACKEND (Django) ===
+# Ignorar archivos compilados de Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales (MUY IMPORTANTE: no queremos subir los GB de la librería de Python)
+venv/
+env/
+.venv/
+
+# Base de datos local (SQLite)
+# Generalmente en desarrollo usas db.sqlite3, no se debe subir para que no sobreescriba la de otros
+*.sqlite3
+
+# Archivos estáticos y media cargada por usuarios
+backend/static/
+backend/media/
+
+# Logs de Django
+*.log
+
+# Configuraciones de editores
+.vscode/
+.idea/

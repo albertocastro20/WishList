@@ -2,12 +2,12 @@
 
 ![Live Demo](https://img.shields.io/badge/Vercel-Deploy-lightgray?style=for-the-badge&logo=vercel)
 
-## 🚀 Ver Proyecto en Vivo (Live Demo)
-
+🚀 Ver Proyecto en Vivo (Live Demo)
 ¡Haz clic aquí para ver la aplicación funcionando!
 
-[https://wish-list-1x5yrj86c-alberto-castro-lopezs-projects.vercel.app/](https://wish-list-1x5yrj86c-alberto-castro-lopezs-projects.vercel.app/)
+https://wish-list-rose.vercel.app/
 
+Enlace Directo: https://wish-list-rose.vercel.app/
 ---
 
 ## 🎯 Descripción del Proyecto

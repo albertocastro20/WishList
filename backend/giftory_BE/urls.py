@@ -23,7 +23,7 @@ from regalos.views import UserCreate
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/", include("regalos.urls")),
-    path('', RedirectView.as_view(url='regalos/', permanent=True)),
+    path('', RedirectView.as_view(url='api/regalos/', permanent=True)),
     path('api/login/', views.obtain_auth_token),
     path('api/register/', UserCreate.as_view()), 
 ]

@@ -141,6 +141,7 @@ STATIC_URL = '/static/'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://wish-list-rose.vercel.app/",
 ]
 
 # This production code might break development mode, so we check whether we're in DEBUG mode

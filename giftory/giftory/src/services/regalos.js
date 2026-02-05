@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/api/regalos/"
+const API_URL = "https://wishlist-kwyb.onrender.com/api/regalos/"
 
 export const regaloService = {
 

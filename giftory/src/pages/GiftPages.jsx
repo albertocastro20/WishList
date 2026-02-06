@@ -134,8 +134,8 @@ const GiftPage = ({ token, logOut, userLogin }) => {
 
   return (
     <>
-      <div className='up'>
-        <h1>💞 Girlfriend's whishlist 💞</h1>
+      <div className='cabecera'>
+        <h1>💞 Giftory: Wishlist💞</h1>
         <div className='infoUser'>
           <h3 className='saludo'>Hi {userLogin}</h3>
           <button

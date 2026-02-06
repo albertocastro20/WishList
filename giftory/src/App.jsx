@@ -20,6 +20,9 @@ function App() {
   function logOut(){
     localStorage.removeItem('token');
     setToken(null);
+    localStorage.removeItem('user');
+    setUserLogin(null)
+
   }
 
   return (

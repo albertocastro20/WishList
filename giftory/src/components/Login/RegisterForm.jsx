@@ -16,8 +16,8 @@ const RegisterForm = ({ llenarToken }) => {
         const credenciales = { username: user, password: password, email: email };
 
         try {
-            const iniciarSesion = await loginService.registerUser(credenciales);
-            llenarToken(iniciarSesion);
+            const token = await loginService.registerUser(credenciales);
+            llenarToken(token, user);
             navigate("/");
         }
         catch (error) {

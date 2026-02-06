@@ -1,9 +1,9 @@
-
 /*Color del background*/
-h1{
+h1 {
     justify-self: left;
 }
-body{
+
+body {
     background-color: rgb(214, 161, 179);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -11,41 +11,41 @@ body{
 
 /* CSS para contenedores */
 
-.contenedorBotones{
+.contenedorBotones {
     display: flex;
-    
+
 }
 
-.radioCategorias{
+.radioCategorias {
     cursor: pointer;
 }
 
-.GiftList{
+.GiftList {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 20px;
     max-height: 650px;
     min-height: 314px;
-    background-color: rgba(131, 25, 108, 0.3) ;
+    background-color: rgba(131, 25, 108, 0.3);
     overflow-y: auto;
     margin-top: 5px;
-    
-    
+
+
 }
 
-.contenedorEstatus{
+.contenedorEstatus {
     align-self: center;
     margin-left: 25px;
     width: 280px;
 }
 
-.contenedorBarraBusqueda{
+.contenedorBarraBusqueda {
     align-self: center;
     margin-left: 13em;
 }
 
-.barraBusqueda{
+.barraBusqueda {
     width: 250px;
     height: 20px;
     border: 2px solid black;
@@ -53,11 +53,11 @@ body{
     border-radius: 10px;
 }
 
-.categoriaMostrada{
+.categoriaMostrada {
     justify-self: left;
 }
 
-.pContador{
+.pContador {
     justify-self: left;
     background-color: rgba(131, 25, 108, 0.3);
     color: black;
@@ -65,11 +65,11 @@ body{
     border: 2px solid black;
 }
 
-.botonEliminar{
+.botonEliminar {
     border: 1px solid black;
     background-color: rgb(221, 209, 209);
     color: rgb(0, 0, 0);
-    
+
     font-size: 17px;
     width: auto;
     background-color: rgb(214, 161, 179);
@@ -79,7 +79,7 @@ body{
 
 /*  Estilos para los botones de filtrado */
 
-.FButton{
+.FButton {
     border: 1px solid black;
     background-color: rgb(221, 209, 209);
     color: rgb(0, 0, 0);
@@ -91,22 +91,22 @@ body{
     cursor: pointer;
 }
 
-.FButton:hover{
+.FButton:hover {
     background-color: black;
     color: white;
 }
 
-.FButton:active{
+.FButton:active {
     background-color: white;
 }
 
 /* Estilos para la Card con datos que contiene los objetos */
 
-.Card:hover{
+.Card:hover {
     background-color: rgb(240, 240, 240);
 }
 
-.Card{
+.Card {
     position: relative;
     background-color: rgb(170, 114, 163);
     display: flex;
@@ -117,32 +117,33 @@ body{
     border: 2px solid black;
     border-radius: 5px;
     margin: 5px;
-    transition: background-color 0.5s ease; /*Se le agrega un efecto visual de transición*/
+    transition: background-color 0.5s ease;
+    /*Se le agrega un efecto visual de transición*/
 
 }
 
 
 
-.comprado{
-    background-color: rgb(146, 70, 136) !important ;
+.comprado {
+    background-color: rgb(146, 70, 136) !important;
 }
 
-.comprado:hover{
+.comprado:hover {
     background-color: rgb(180, 120, 170) !important;
 }
 
-.contenedorTitulo{
+.contenedorTitulo {
     display: flex;
 }
 
-.Titulo{
+.Titulo {
     display: inline-block;
     justify-self: left;
-    margin: 15px auto 15px 15px ;
+    margin: 15px auto 15px 15px;
 
 }
 
-.botonOpciones{
+.botonOpciones {
     display: inline-block;
     justify-content: right;
     margin: 0.1em .3em auto 1em;
@@ -151,18 +152,18 @@ body{
     border-radius: 10px;
 }
 
-.imagenCard{
+.imagenCard {
     align-self: center;
 }
 
-.contenedorDescripcion{
+.contenedorDescripcion {
     overflow-y: auto;
     max-height: 95px;
 }
 
 /* Estilo para el boton de agregar un nuevo item */
 
-.buttonAddElement{
+.buttonAddElement {
     font-size: 45px;
     background-color: rgb(170, 114, 163);
     width: 1.1em;
@@ -175,18 +176,18 @@ body{
     align-items: center;
 }
 
-.buttonAddElement:hover{
+.buttonAddElement:hover {
     background-color: white;
 }
 
-.buttonAddElement:active{
+.buttonAddElement:active {
     background-color: black;
 }
 
 /* Estilos para los elementos de la Card de registro, la Card de registro usa el mismo estilo que la Card normal*/
 
 
-.descripcionInput{
+.descripcionInput {
     font-family: Arial, Helvetica, sans-serif;
     margin: 1em;
     height: 90%;
@@ -194,47 +195,50 @@ body{
     align-items: start;
 }
 
-.InputCosto{
+.InputCosto {
     margin: .5em 1em;
     width: 5em;
 }
 
-.urlObjeto{
+.urlObjeto {
     width: 15em;
     align-self: center;
 }
 
-.botonRegistrar{
-    
+.botonRegistrar {
+
     align-self: center;
     margin-left: auto;
     margin: 1em 1em 1em 3em;
 }
 
 /*Se crean los estilos para el menu de opciones*/
-.contenedorOpciones{
+.contenedorOpciones {
     /* 1. Saca el elemento del flujo normal (la clave para que no desacomode) */
-    position: absolute; 
-    
+    position: absolute;
+
     /* 2. Colócalo donde quieres que aparezca (ej. en la esquina superior derecha) */
-    top: 20px; /* Aparece justo debajo del botón o borde superior */
-    right: 5px;   /* Se alinea a la derecha del contenedor (.gift-card) */
-    
+    top: 20px;
+    /* Aparece justo debajo del botón o borde superior */
+    right: 5px;
+    /* Se alinea a la derecha del contenedor (.gift-card) */
+
     /* 3. Asegura que siempre esté por encima de otros elementos (la clave de superposición) */
-    z-index: 10; 
-    
+    z-index: 10;
+
     /* 4. Estilos visuales */
-    background-color: rgba(85, 13, 74, .80); /* Color de fondo (puedes usar un color semitransparente si quieres) */
-    border: 1px solid #ccc; 
+    background-color: rgba(85, 13, 74, .80);
+    /* Color de fondo (puedes usar un color semitransparente si quieres) */
+    border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /*min-width: 150px; /* Asegura que tenga un ancho mínimo */
     max-width: 100px;
     padding: 5px 0;
     pointer-events: none;
-    
+
 }
 
-.botonesOpcion{
+.botonesOpcion {
     width: 85px;
     margin: 4px auto;
     background-color: rgb(83, 21, 92);
@@ -243,16 +247,18 @@ body{
     pointer-events: auto;
 }
 
-.botonesOpcion:hover{
+.botonesOpcion:hover {
     cursor: pointer;
 }
 
 
 /*Estilos del mensaje flotante*/
 .mensajeFlotante {
-    visibility: hidden; /* Oculto por defecto */
+    visibility: hidden;
+    /* Oculto por defecto */
     min-width: 250px;
-    margin-left: -125px; /* Centrar */
+    margin-left: -125px;
+    /* Centrar */
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -261,8 +267,9 @@ body{
     position: fixed;
     z-index: 1;
     left: 50%;
-    bottom: 30px; /* Posición inferior */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    bottom: 30px;
+    /* Posición inferior */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Clases para mostrar y ocultar con animación */
@@ -275,23 +282,51 @@ body{
 
 /* Definición de animaciones */
 @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
 }
 
 @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
 
 @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
 
 
@@ -301,47 +336,59 @@ body{
 
     /* Los botones, el estatus y la búsqueda deben ir en columna. */
     .contenedorBotones {
-        flex-direction: column; /* Apila todos los elementos verticalmente */
-        align-items: center;    /* Centra los elementos horizontalmente */
+        flex-direction: column;
+        /* Apila todos los elementos verticalmente */
+        align-items: center;
+        /* Centra los elementos horizontalmente */
     }
 
     .contenedorEstatus {
         margin-left: 0;
-        margin-top: 15px; /* Añade espacio arriba */
+        margin-top: 15px;
+        /* Añade espacio arriba */
     }
 
     .contenedorBarraBusqueda {
-        margin-left: 0; /* Elimina el margen fijo de 15em */
+        margin-left: 0;
+        /* Elimina el margen fijo de 15em */
         margin-top: 15px;
-        width: 90%; /* Ocupa casi todo el ancho disponible */
-        display: flex; /* Asegura que el contenido interno (barra) se centre */
+        width: 90%;
+        /* Ocupa casi todo el ancho disponible */
+        display: flex;
+        /* Asegura que el contenido interno (barra) se centre */
         justify-content: center;
     }
 
     .barraBusqueda {
-        width: 95%; /* Asegura que la barra de búsqueda use el ancho del contenedor */
-        max-width: 300px; /* Limita un poco para no ser demasiado ancha en tabletas */
+        width: 95%;
+        /* Asegura que la barra de búsqueda use el ancho del contenedor */
+        max-width: 300px;
+        /* Limita un poco para no ser demasiado ancha en tabletas */
     }
 
 }
 
 /*Estilos para el apartado de la lista*/
 @media (max-width: 600px) {
-    
+
     .GiftList {
         /* Permite que las tarjetas se centren si no llenan la pantalla */
-        justify-content: center; 
-        
+        justify-content: center;
+
         /* Reduce un poco el alto máximo para que ocupe más espacio visible de la pantalla */
-        max-height: 500px; 
+        max-height: 500px;
     }
-    
+
     .Card {
         /* Reduce un poco el ancho y alto para que quepa mejor en pantallas estrechas */
-        width: 90%; /* Ocupa el 90% del ancho del contenedor */
-        max-width: 300px; /* Pero no excede un tamaño fijo */
-        height: auto; /* Permite que la altura se ajuste al contenido */
-        margin: 10px 0; /* Margen vertical para separarlas */
+        width: 90%;
+        /* Ocupa el 90% del ancho del contenedor */
+        max-width: 300px;
+        /* Pero no excede un tamaño fijo */
+        height: auto;
+        /* Permite que la altura se ajuste al contenido */
+        margin: 10px 0;
+        /* Margen vertical para separarlas */
     }
 
     /* Si las imágenes son muy grandes, asegúrate de que se ajusten al ancho de la Card */
@@ -354,24 +401,24 @@ body{
 
 
 /*Estilos para el LoginPage*/
-.LoginFormContainer{
+.LoginFormContainer {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 300px;
 }
 
-.inputLogin{
+.inputLogin {
     margin: 5px;
     width: 250px;
     border-radius: 5px;
     height: 20px;
     border: 2px solid black;
     background-color: pink;
-    
+
 }
 
-.botonLogin{
+.botonLogin {
     border: 1px solid black;
     background-color: rgb(221, 209, 209);
     color: rgb(0, 0, 0);
@@ -383,44 +430,51 @@ body{
     cursor: pointer;
 }
 
-.up{
-    
+/*Estilos para la seccion de cerrar sesion*/
+
+.cabecera {
+
     display: flex;
-    width: 1250px;
-    
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    padding: 1rem 2rem;
+    background-color: #dd6faf;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.infoUser{
-    width: 350px;
-    margin-left: 450px;
-    margin-top: 20px;
+.infoUser {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    /* Alinea el texto "Hi" con el botón */
+    gap: 15px;
 }
 
-.logoutButton{
+.logoutButton {
     border: 1px solid black;
     color: rgb(0, 0, 0);
-    margin: 17px 40px;
-    font-size: 13px;
-    width: 100px;
-    height: 30px;
+    padding: 8px 16px;
     background-color: rgb(214, 161, 179);
     border-radius: 10px;
     cursor: pointer;
 }
 
-.logoutButton:hover{
+.logoutButton:hover {
     background-color: black;
     color: white;
 }
 
 
-.logoutButton:active{
+.logoutButton:active {
     background-color: white;
     color: black;
 }
 
-.saludo{
-    width: 300px;
+.saludo {
+    margin: 0;
+    /* Quita márgenes por defecto para que no se mueva */
+    font-size: 1.1rem;
 }

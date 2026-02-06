@@ -17,8 +17,10 @@ Ver Proyecto en Vivo (Live Demo)
 Enlace Directo: https://wish-list-rose.vercel.app/
 
 ##  Estructura del Repositorio
-- **/frontend**: Aplicación React con Vite y gestión de estado dinámica. [Ver detalles](./giftory/README.md)
+- **/giftory**: Es el frontend. Aplicación React con Vite y gestión de estado dinámica. [Ver detalles](./giftory/README.md)
 - **/backend**: API REST robusta construida con Django y DRF. [Ver detalles](./backend/README.md)
 
 ## ⚡ Quick Start
 Si quieres correr el proyecto completo en local, por favor sigue las instrucciones de instalación dentro de cada carpeta.
+
+> **Nota:** Se requiere tener instalado Python 3.x y Node.js para la ejecución completa.

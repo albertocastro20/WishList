@@ -29,3 +29,34 @@ El proyecto demuestra las siguientes habilidades y patrones:
 * **Lenguaje:** JavaScript ES6+
 * **Persistencia:** Local Storage API
 * **Despliegue (Hosting):** Vercel
+
+
+## ⚙️ Instrucciones de Ejecución Local
+
+Para explorar y ejecutar este código en tu máquina:
+
+1. **Entra a la carpeta:**
+   ```bash
+   cd frontend
+
+2. **Instala las dependencias:**
+
+    ```bash
+    npm install
+
+3. **Configura el entorno: Crea un archivo .env y apunta a tu API:**
+
+    ```bash
+    VITE_API_URL=[http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)
+
+4. **Corre el proyecto:**
+    ```bash
+    npm run dev
+
+
+***🔌 Requisitos del Sistema***
+Este frontend requiere que el Backend de Giftory esté activo para las funciones de Registro, Login y guardado de datos.
+
+
+---
+

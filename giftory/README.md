@@ -1,31 +1,12 @@
-# 💖 Girlfriend's Wishlist | Lista de Deseos Interactivo
+# Giftory (Frontend en React)
 
-![Live Demo](https://img.shields.io/badge/Vercel-Deploy-lightgray?style=for-the-badge&logo=vercel)
 
-🚀 Ver Proyecto en Vivo (Live Demo)
-¡Haz clic aquí para ver la aplicación funcionando!
-
-https://wish-list-rose.vercel.app/
-
-Enlace Directo: https://wish-list-rose.vercel.app/
----
-
-## 🎯 Descripción del Proyecto
-
-"Girlfriend's Wishlist" es una aplicación de lista de deseos interactiva diseñada para demostrar habilidades en la gestión de estado de React, persistencia de datos y desarrollo de UI responsiva.
-
-El objetivo principal es mantener una lista de regalos donde los artículos se pueden agregar, editar, filtrar y marcar como comprados, asegurando que todos los datos persistan en el navegador.
-
-El sitio en si es una herramienta para ser una MEJOR pareja, ya que es util para ser detallista
-
----
-
-## ✨ Características Clave Implementadas
+##  Características Clave Implementadas
 
 El proyecto demuestra las siguientes habilidades y patrones:
 
 1.  **Persistencia de Datos Robusta:**
-    * La lista de deseos se carga de la **`localStorage`** al inicio (usando `useState`) y se guarda automáticamente al cambiar (usando **`useEffect`**), asegurando que los datos no se pierdan al recargar.
+    Persistencia en Base de Datos Relacional mediante una API REST propia creada en Django. Se realiza uso del localStorage para el manejo del Token
 2.  **Gestión de Estado Compleja (CRUD):**
     * Implementación de funciones para **Crear**, **Editar** y **Eliminar** ítems, con un componente `InputCard` reutilizado para ambos modos (creación y edición).
     * **Manejo de IDs Seguros:** Uso de la librería **`uuid`** para generar identificadores únicos universales y prevenir colisiones de datos.

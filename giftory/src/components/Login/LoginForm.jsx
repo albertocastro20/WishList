@@ -7,6 +7,7 @@ const Login = ({ llenarToken }) => {
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const [errorLogin, setErrorLogin] = useState(false);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -17,26 +18,33 @@ const Login = ({ llenarToken }) => {
         try {
             const token = await loginService.loginUser(credenciales);
             llenarToken(token, user);
+            setErrorLogin(false);
             navigate("/");
         }
         catch (error) {
             console.error("Error en POST", error);
+            setErrorLogin(true);
         }
 
     }
 
     return (
         <>
+            {
+                errorLogin && ( //Si es true, se muestra el componente del popup
+                    <p>Username or password incorrect. Try again</p>
+                )
+            }
             <input
                 type="text"
-                placeholder="Ingrese su usuario"
+                placeholder="Username"
                 className="inputLogin"
                 value={user}
                 onChange={(e) => setUser(e.target.value)}
             />
             <input
-                type="text"
-                placeholder="Ingrese su contraseña"
+                type="password"
+                placeholder="Password"
                 className="inputLogin"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -52,7 +60,7 @@ const Login = ({ llenarToken }) => {
 
             <button
                 className="botonLogin"
-                onClick={() => {navigate("/register")}}
+                onClick={() => { navigate("/register") }}
             >
                 Are you new in this site?
             </button>

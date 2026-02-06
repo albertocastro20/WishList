@@ -4,7 +4,7 @@ const LoginPage = ({ setToken, token, llenarToken }) => {
 
     return (
         <>
-            <h1>Giftory</h1>
+            <h1>🎁 Giftory 🎁</h1>
             <h3>Iniciar sesión en Giftory</h3>
 
             <div className="preview">

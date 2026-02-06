@@ -4,7 +4,7 @@ const RegisterPage = ({ llenarToken }) => {
 
     return (
         <>
-            <h1>Giftory</h1>
+            <h1>🎁 Giftory 🎁 </h1>
             <h3>Please, register your account</h3>
 
             <div

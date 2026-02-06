@@ -14,6 +14,8 @@ El sitio en si es una herramienta para ser una MEJOR pareja, ya que es util para
 Ver Proyecto en Vivo (Live Demo)
 ¡Haz clic aquí para ver la aplicación funcionando!
 
+***¡Importante! El sistema está alojado en un plan gratuito, por lo que la primera carga de datos puede tardar alrededor de un minuto***
+
 Enlace Directo: https://wish-list-rose.vercel.app/
 
 ##  Estructura del Repositorio

@@ -23,10 +23,3 @@ Este es el motor de Giftory, una API robusta construida con **Django** y **Djang
 | `POST` | `/api/login/` | Autentica usuario y devuelve el Token. | No |
 | `GET` | `/api/regalos/` | Lista solo los regalos del usuario autenticado. | Sí |
 | `POST` | `/api/regalos/` | Crea un nuevo regalo (asocia el usuario auto). | Sí |
-
-## ⚙️ Instalación y Configuración
-
-1. **Clonar el repositorio e ingresar a la carpeta:**
-   ```bash
-   git clone <url-de-tu-repo>
-   cd backend

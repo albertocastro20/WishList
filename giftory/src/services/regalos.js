@@ -1,4 +1,4 @@
-const API_URL = "https://wishlist-kwyb.onrender.com/api/regalos/"
+const API_URL = `${import.meta.env.VITE_API_URL}/api/regalos/`
 
 export const regaloService = {
 
